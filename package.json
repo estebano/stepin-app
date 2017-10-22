@@ -1,0 +1,20 @@
+{
+  "name": "stepin-app",
+  "version": "0.0.1",
+  "description": "My first app created step by step",
+  "main": "index.js",
+  "scripts": {
+    "test": "testite",
+    "start": "react-scripts start"
+  },
+  "keywords": [
+    "one-keyword"
+  ],
+  "author": "Hubert Tuszyński",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "^1.0.14"
+  }
+}
