@@ -10,11 +10,18 @@ import { addTodo } from './actions'
 import "./index.css";
 
 let store = createStore(todoApp);
+let unsubscribe = store.subscribe(()=>{
+    console.log(store.getState());
+});
+
 store.dispatch(addTodo('Pierwsze zadanie'));
-console.log(store.getState());
 
 ReactDOM.render(
     <App />,
     document.getElementById("root")
 );
+
+window.onunload = () => {
+    unsubscribe();
+}
 
