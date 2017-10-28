@@ -4,6 +4,11 @@ import { ProductTable } from './product-table';
 
 
 export class FilterableProductTable extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {filterText: '', inStockOnly: false};
+    }
+
     render() {
         let productsByCategory = this.props.data.sort((a,b)=>{
             return a.category > b.category;
@@ -11,8 +16,13 @@ export class FilterableProductTable extends React.Component {
 
         return (
             <div>
-                <SearchBar />
-                <ProductTable products={productsByCategory} />
+                <SearchBar 
+                    filterText={this.state.filterText} 
+                    inStockOnly={this.state.inStockOnly} />
+                <ProductTable 
+                    filterText={this.state.filterText} 
+                    inStockOnly={this.state.inStockOnly}
+                    products={productsByCategory} />
             </div>
         );
     }

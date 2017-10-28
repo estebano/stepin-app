@@ -11,9 +11,19 @@ import FilterableProductTable from "./filterable-product-data";
 export class App extends React.Component {
     constructor(props) {
         super(props);
+        this.onLoginChange = this.onLoginChange.bind(this);
         this.state = {
-            isLoggedIn: false
+            isLoggedIn: false,
+            loginName: undefined
         };
+    }
+
+    onLoginChange = function(loginName){
+        let isLoggedIn = loginName !== undefined;
+        this.setState({
+            loginName,
+            isLoggedIn
+        });
     }
 
     render() {
@@ -34,7 +44,7 @@ export class App extends React.Component {
         return (
             <div>
                 <div className="pan lg">
-                    <Greeting isLoggedIn={this.state.isLoggedIn} />
+                    <Greeting isLoggedIn={this.state.isLoggedIn} loginName={this.state.loginName} onLoginChange={this.onLoginChange} />
                     <h1>Togglery</h1>
                     {toggles}
                     <Clock />
