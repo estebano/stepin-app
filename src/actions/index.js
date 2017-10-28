@@ -15,3 +15,10 @@ export const addTodo = (text) => {
         text
     }
 }
+
+export const setVisibility = (visibility) => {
+    return {
+        type: SET_VISIBILITY_FILTER,
+        visibility
+    }
+}

@@ -14,7 +14,6 @@ let unsubscribe = store.subscribe(()=>{
     console.log(store.getState());
 });
 
-store.dispatch(addTodo('Pierwsze zadanie'));
 
 ReactDOM.render(
     <App />,
