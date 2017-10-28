@@ -10,7 +10,6 @@ export class Toggle extends React.Component {
     }
 
     handleClick = (e) => {
-        debugger;
         this.setState(prevState => ({
             isToggleOn: !prevState.isToggleOn
         }));

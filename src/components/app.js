@@ -2,9 +2,11 @@ import React from "react";
 import { Clock } from "./clock";
 import { Toggle } from "./toggle"
 //import { GuestGreeting } from "./guest-greeting";
-import {Greeting} from "./greeting";
+import { Greeting } from "./greeting";
 import { generateUUID } from "../utils/generals";
 import { TestDecomposition } from "./test-decomposition";
+import mock from '../data/mock';
+import FilterableProductTable from "./filterable-product-data";
 
 export class App extends React.Component {
     constructor(props) {
@@ -17,7 +19,7 @@ export class App extends React.Component {
     render() {
         let toggles = [];
 
-        for (var i = 0; i < 27; i++) {
+        for (var i = 0; i < 4; i++) {
             toggles.push(<Toggle key={generateUUID()} />);
         }
 
@@ -31,11 +33,16 @@ export class App extends React.Component {
 
         return (
             <div>
-                <Greeting isLoggedIn={this.state.isLoggedIn} />
-                <h1>Togglery</h1>
-                {toggles}
-                <Clock />
-                <TestDecomposition {...decompo} />
+                <div className="pan lg">
+                    <Greeting isLoggedIn={this.state.isLoggedIn} />
+                    <h1>Togglery</h1>
+                    {toggles}
+                    <Clock />
+                    <TestDecomposition {...decompo} />
+                </div>
+                <div className="pan lb">
+                    <FilterableProductTable data={mock} />
+                </div>
             </div>
         );
     }

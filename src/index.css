@@ -1,0 +1,12 @@
+.pan{
+    float: left;
+    padding: 15px;
+}
+
+.lg{
+    background-color: lightgray;
+}
+
+.lb{
+    background-color: lightblue;
+}
