@@ -19,6 +19,7 @@ export class Toggle extends React.Component {
     }
 
     handleClick = (e) => {
+        e.preventDefault();
         this.setState(prevState => ({
             isToggleOn: !prevState.isToggleOn
         }));

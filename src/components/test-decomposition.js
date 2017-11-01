@@ -4,11 +4,6 @@ export class TestDecomposition extends React.Component {
 
     i = 0;
 
-    constructor(props) {
-        super(props);
-        console.log(`Props decomposition: ${props}`);
-    }
-
     testIfStringAndAddToItems(obj) {
         let items = [];
 

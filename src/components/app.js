@@ -8,7 +8,7 @@ import { TestDecomposition } from "./test-decomposition";
 import mock from '../data/mock';
 import FilterableProductTable from "./filterable-product-data";
 import { addTodo, removeTodo } from '../actions'
-import VisibleTodoList, {Footer} from './ToDoList';
+import VisibleTodoList, {Footer, AddTodoContainer} from './ToDoList';
 
 
 export class App extends React.Component {
@@ -72,6 +72,7 @@ export class App extends React.Component {
                     <FilterableProductTable data={mock} />
                 </div>
                 <div className="pan lc">
+                    <AddTodoContainer />
                     <VisibleTodoList />
                     <Footer />
                 </div>

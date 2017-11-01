@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 function getVisibleTodos(todos, visibilityFilter) {
     switch (visibilityFilter) {
         case VisibilityFilters.SHOW_ALL:
-            return todos;
+            return todos.map((e,i)=>{e.id = i; return e;});
         case VisibilityFilters.SHOW_ACTIVE:
-            return todos.filter(t => !t.isDone);
+            return todos.filter(t => !t.isDone).map((e,i)=>{e.id = i; return e;});
         case VisibilityFilters.SHOW_COMPLETED:
-            return todos.filter(t => t.isDone);
+            return todos.filter(t => t.isDone).map((e,i)=>{e.id = i; return e;});
         default:
             return todos;
     }

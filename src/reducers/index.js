@@ -25,7 +25,7 @@ function todos(state = [], action) {
                 let todo = state[action.id];
                 state[action.id].isDone = !todo.isDone;
             }
-            return state;
+            return [...state];
         default:
             return state;
     }

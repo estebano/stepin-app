@@ -13,9 +13,9 @@ import "./index.css";
 
 let store = createStore(todoApp, /* preloadedState, */
                         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-let unsubscribe = store.subscribe(()=>{
-    console.log(store.getState());
-});
+// let unsubscribe = store.subscribe(()=>{
+//     console.log(store.getState());
+// });
 
 store.dispatch(addTodo("hello"));
 
@@ -26,7 +26,7 @@ ReactDOM.render(
     document.getElementById("root")
 );
 
-window.onunload = () => {
-    unsubscribe();
-}
+// window.onunload = () => {
+//     unsubscribe();
+// }
 
