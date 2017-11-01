@@ -2,17 +2,37 @@ import React from "react";
 
 export class TestDecomposition extends React.Component {
 
+    i = 0;
+
     constructor(props) {
         super(props);
         console.log(`Props decomposition: ${props}`);
     }
 
-    render() {
+    testIfStringAndAddToItems(obj) {
         let items = [];
-        let i = 0;
-        for (var key in this.props) {
-            items.push(<li key={i++}>{key + " " + this.props[key]}</li>);
+
+        for(let k in obj){
+            let val = obj[k];
+            if(typeof val === "string" || typeof val === "number"){
+                items.push(<li key={this.i++}>{k + " " + val}</li>)
+            }else{
+                let subitems = this.testIfStringAndAddToItems(val);
+                items.push(
+                    <li key={this.i++}>{k}:
+                        <ul>
+                            {subitems}
+                        </ul>
+                    </li>
+                )
+            }
         }
+        return items;
+    }
+
+    render() {
+        let items = this.testIfStringAndAddToItems(this.props);
+
         return (
             <div>
                 <h2>Test dekompozycji:</h2>

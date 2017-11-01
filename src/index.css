@@ -10,3 +10,11 @@
 .lb{
     background-color: lightblue;
 }
+
+.lc{
+    background-color: lightcyan;
+}
+
+li{
+    font-style: italic;
+}

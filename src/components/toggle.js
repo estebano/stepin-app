@@ -3,10 +3,19 @@ import React from "react";
 export class Toggle extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { isToggleOn: false };
+        this.state = { isToggleOn: false, someOther: false };
 
         // This binding is necessary to make `this` work in the callback
         //// this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentWillUpdate(nextProps, nextState){
+        if(this.state.isToggleOn !== nextState.isToggleOn){
+            this.props.onChange({
+                isToggleOn: nextState.isToggleOn,
+                id: nextProps.id
+            });
+        }
     }
 
     handleClick = (e) => {

@@ -7,11 +7,15 @@ import { generateUUID } from "../utils/generals";
 import { TestDecomposition } from "./test-decomposition";
 import mock from '../data/mock';
 import FilterableProductTable from "./filterable-product-data";
+import { addTodo, removeTodo } from '../actions'
+import VisibleTodoList, {Footer} from './ToDoList';
+
 
 export class App extends React.Component {
     constructor(props) {
         super(props);
         this.onLoginChange = this.onLoginChange.bind(this);
+        this.onTogglerChange = this.onTogglerChange.bind(this);
         this.state = {
             isLoggedIn: false,
             loginName: undefined
@@ -26,18 +30,32 @@ export class App extends React.Component {
         });
     }
 
+    onTogglerChange = function(e){
+        let text = `Toggler: ${e.id}`;
+        if(e.isToggleOn){
+            this.props.store.dispatch(addTodo(text));
+        }else{
+            this.props.store.dispatch(removeTodo(text));
+        }
+    }
+
     render() {
         let toggles = [];
 
         for (var i = 0; i < 4; i++) {
-            toggles.push(<Toggle key={generateUUID()} />);
+            toggles.push(<Toggle key={generateUUID()} onChange={this.onTogglerChange} id={generateUUID()} />);
         }
 
         let decompo = {
             id: 1,
             name: "Hello decompo!",
             assoc: {
-                some: "text"
+                some: "text",
+                some1: "other text",
+                assoc1: {
+                    some: "text",
+                    some1: "text"
+                }
             }
         };
 
@@ -52,6 +70,10 @@ export class App extends React.Component {
                 </div>
                 <div className="pan lb">
                     <FilterableProductTable data={mock} />
+                </div>
+                <div className="pan lc">
+                    <VisibleTodoList />
+                    <Footer />
                 </div>
             </div>
         );
