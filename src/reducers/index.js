@@ -21,7 +21,7 @@ function todos(state = [], action) {
                 ...newState
             ];
         case TOGGLE_TODO:
-            if(action.id in state){
+            if (action.id in state) {
                 let todo = state[action.id];
                 state[action.id].isDone = !todo.isDone;
             }
