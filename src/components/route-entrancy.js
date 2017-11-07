@@ -1,6 +1,6 @@
 import React from "react";
 import { Clock } from "./clock";
-import { Toggle } from "./toggle"
+import TogglerContainer from "./TogglerContainer";
 //import { GuestGreeting } from "./guest-greeting";
 import { Greeting } from "./greeting";
 import { generateUUID } from "../utils/generals";
@@ -14,7 +14,6 @@ class Entrancy extends React.Component {
     constructor(props) {
         super(props);
         this.onLoginChange = this.onLoginChange.bind(this);
-        this.onTogglerChange = this.onTogglerChange.bind(this);
         this.state = {
             isLoggedIn: false,
             loginName: undefined
@@ -29,20 +28,11 @@ class Entrancy extends React.Component {
         });
     }
 
-    onTogglerChange = function (e) {
-        let text = `Toggler: ${e.id}`;
-        if (e.isToggleOn) {
-            this.props.store.dispatch(addTodo(text));
-        } else {
-            this.props.store.dispatch(removeTodo(text));
-        }
-    }
-
     render() {
         let toggles = [];
 
         for (var i = 0; i < 4; i++) {
-            toggles.push(<Toggle key={generateUUID()} onChange={this.onTogglerChange} id={generateUUID()} />);
+            toggles.push(<TogglerContainer key={generateUUID()} onChange={this.onTogglerChange} id={generateUUID()} />);
         }
 
         let decompo = {
@@ -61,7 +51,7 @@ class Entrancy extends React.Component {
         return (
             <div>
                 <div className="pan lg">
-                    <Greeting isLoggedIn={this.state.isLoggedIn} loginName={this.state.loginName} onLoginChange={this.onLoginChange} />
+                    {/* <Greeting isLoggedIn={this.state.isLoggedIn} loginName={this.state.loginName} onLoginChange={this.onLoginChange} /> */}
                     <h1>Togglery</h1>
                     {toggles}
                     <Clock />

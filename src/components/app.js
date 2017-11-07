@@ -15,23 +15,20 @@ export class App extends React.Component {
 
         };
     }
-
-    Entrancy = (<Entrancy store={this.props.store} />)
-    ActionAsync = (<ActionAsync />);
-
+    
     render() {
         return (
             <Router>
                 <div>
                     <nav>
                         <Link to="/entrancy" >Entrancy</Link>
-                        {' '}
+                        {' | '}
                         <Link to="/asyncActions" >Akcje asynchroniczne</Link>
                         {' '}
                     </nav>
                     <div>
-                        <Route path="/entrancy" component={Entrancy} ></Route>
-                        <Route path="/asyncActions" component={ActionAsync} ></Route>
+                        <Route path="/entrancy" component={()=>(<Entrancy />)}></Route>
+                        <Route path="/asyncActions" component={()=>(<ActionAsync />)}></Route>
                     </div>
                 </div>
             </Router>

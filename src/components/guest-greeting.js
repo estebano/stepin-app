@@ -21,7 +21,7 @@ export class GuestGreeting extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        this.props.onLoginChange(prevState.loginName);
+        this.props.onLoginChange(this.state.loginName);
     }
 
     onSubmit(e) {
